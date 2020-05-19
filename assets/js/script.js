@@ -1,7 +1,7 @@
-(function($, sr) {
+(function ($, sr) {
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
-    var debounce = function(func, threshold, execAsap) {
+    var debounce = function (func, threshold, execAsap) {
         var timeout;
 
         return function debounced() {
@@ -20,14 +20,14 @@
         };
     };
     // smartresize
-    jQuery.fn[sr] = function(fn) {
+    jQuery.fn[sr] = function (fn) {
         return fn ? this.bind("resize", debounce(fn)) : this.trigger(sr);
     };
 })(jQuery, "smartresize");
 
 var $ = jQuery;
 
-(function() {
+(function () {
     ///////////////////////////////
     // Set Home Slideshow Height
     ///////////////////////////////
@@ -70,7 +70,7 @@ var $ = jQuery;
     centerHomeBannerText();
 
     //Resize events
-    jQuery(window).smartresize(function() {
+    jQuery(window).smartresize(function () {
         setHomeBannerHeight();
         centerHomeBannerText();
     });
@@ -90,20 +90,20 @@ var $ = jQuery;
 function animationHover(element, animation) {
     element = $(element);
     element.hover(
-        function() {
+        function () {
             element.addClass("animated " + animation);
         },
-        function() {
+        function () {
             //wait for animation to finish before removing classes
-            window.setTimeout(function() {
+            window.setTimeout(function () {
                 element.removeClass("animated " + animation);
             }, 2000);
         }
     );
 }
 
-$(document).ready(function() {
-    $("#scrollToContent").each(function() {
+$(document).ready(function () {
+    $("#scrollToContent").each(function () {
         animationHover(this, "pulse");
     });
 });
@@ -133,7 +133,7 @@ document.onscroll = scroll;
 // Testimonial Slide
 ///////////////////////////////
 
-$(document).ready(function() {
+$(document).ready(function () {
     $("#testimonial-container").owlCarousel({
         navigation: false, // Show next and prev buttons
         slideSpeed: 700,
@@ -157,7 +157,7 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 }
 
-setInterval(function() {
+setInterval(function () {
     var $sample = $("#img-angular");
     var $nodej = $("#img-node");
     var $net = $("#img-net");
@@ -180,9 +180,27 @@ setInterval(function() {
         moveAngular(85, "myBarBoot");
     }
     if ($sql.is(":hover")) {
-        moveAngular(75, "myBarSql");
+        moveAngular(55, "myBarSql");
     }
 }, 1);
+$("#img-angular").click(function () {
+    moveAngular(70, "myBarAngular");
+});
+$("#img-node").click(function () {
+    moveAngular(40, "myBarNodejs");
+});
+$("#img-net").click(function () {
+    moveAngular(55, "myBarNet");
+});
+$("#img-android").click(function () {
+    moveAngular(65, "myBarAndroid");
+});
+$("#img-boot").click(function () {
+    moveAngular(85, "myBarBoot");
+});
+$("#img-sql").click(function () {
+    moveAngular(55, "myBarSql");
+});
 var i = 0;
 
 function moveAngular(number, element) {
